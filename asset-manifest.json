@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/plan-your-trips/static/css/main.1b663f0f.css",
+    "main.css": "/plan-your-trips/static/css/main.652e2d8f.css",
     "main.js": "/plan-your-trips/static/js/main.30a7400b.js",
     "static/media/istanbul.jpg": "/plan-your-trips/static/media/istanbul.6732ef0a617722e94254.jpg",
     "static/media/roma.jpg": "/plan-your-trips/static/media/roma.a0984e59e25a4fa73e5c.jpg",
@@ -15,11 +15,11 @@
     "static/media/odesa.jpg": "/plan-your-trips/static/media/odesa.88b7847ba58f4b157437.jpg",
     "static/media/berlin.jpg": "/plan-your-trips/static/media/berlin.d8b3403e5bd4b35e8937.jpg",
     "index.html": "/plan-your-trips/index.html",
-    "main.1b663f0f.css.map": "/plan-your-trips/static/css/main.1b663f0f.css.map",
+    "main.652e2d8f.css.map": "/plan-your-trips/static/css/main.652e2d8f.css.map",
     "main.30a7400b.js.map": "/plan-your-trips/static/js/main.30a7400b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b663f0f.css",
+    "static/css/main.652e2d8f.css",
     "static/js/main.30a7400b.js"
   ]
 }
