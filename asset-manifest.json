@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/plan-your-trips/static/css/main.f33c37e3.css",
+    "main.js": "/plan-your-trips/static/js/main.45a7c058.js",
+    "static/media/istanbul.jpg": "/plan-your-trips/static/media/istanbul.6732ef0a617722e94254.jpg",
+    "static/media/roma.jpg": "/plan-your-trips/static/media/roma.a0984e59e25a4fa73e5c.jpg",
+    "static/media/athens.jpg": "/plan-your-trips/static/media/athens.31d58b4e6ac12b97a8ca.jpg",
+    "static/media/amsterdam.jpg": "/plan-your-trips/static/media/amsterdam.266da7bec8cc6c0e3708.jpg",
+    "static/media/paris.jpg": "/plan-your-trips/static/media/paris.6a57691a5e540249d1cd.jpg",
+    "static/media/tokyo.jpg": "/plan-your-trips/static/media/tokyo.c05b8e9304e235bcc79e.jpg",
+    "static/media/bern.jpg": "/plan-your-trips/static/media/bern.246f9edcd20d9ee5f19e.jpg",
+    "static/media/barcelona.jpg": "/plan-your-trips/static/media/barcelona.8df9b7e3794af3ba05d8.jpg",
+    "static/media/venice.jpg": "/plan-your-trips/static/media/venice.cd3ce14688f3f2be0822.jpg",
+    "static/media/budapest.jpg": "/plan-your-trips/static/media/budapest.4f03f094adf422edee76.jpg",
+    "static/media/odesa.jpg": "/plan-your-trips/static/media/odesa.88b7847ba58f4b157437.jpg",
+    "static/media/berlin.jpg": "/plan-your-trips/static/media/berlin.d8b3403e5bd4b35e8937.jpg",
+    "index.html": "/plan-your-trips/index.html",
+    "main.f33c37e3.css.map": "/plan-your-trips/static/css/main.f33c37e3.css.map",
+    "main.45a7c058.js.map": "/plan-your-trips/static/js/main.45a7c058.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f33c37e3.css",
+    "static/js/main.45a7c058.js"
+  ]
+}
