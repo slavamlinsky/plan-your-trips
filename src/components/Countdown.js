@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { tripsData } from "./Forecast";
 import { timeCounter } from "../utils/timer";
 
 function Countdown(props) {
   const [timer, setTimer] = useState({});
 
-  const trip = tripsData.find((trip) => trip.id === props.tripId);
+  const trip = props.currentTrip;
   const tripStartDay = trip.start;
 
   const validStartDate = tripStartDay.split(".").reverse().join("-");
@@ -29,8 +28,6 @@ function Countdown(props) {
 
   return (
     <div className="trip__countdown">
-      {/* <h1 style={{ textAlign: "center" }}>Trip Start Date</h1>
-      <h2 style={{ textAlign: "center" }}>{tripStartDay}</h2> */}
       <div className="countdown">
         <div className="countdown__days">
           <span>{timer.days}</span> days

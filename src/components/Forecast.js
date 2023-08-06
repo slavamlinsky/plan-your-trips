@@ -21,38 +21,21 @@ export const tripsData = [
     image: "tokyo.jpg",
     // image: "https://www.theinvisibletourist.com/wp-content/uploads/2022/08/featured_231.jpg",
   },
-  {
-    id: "t3",
-    city: "Barcelona",
-    start: "09.08.2023",
-    end: "18.08.2023",
-    image: "barcelona.jpg",
-    // image: "https://www.civitatis.com/f/espana/barcelona/visita-guiada-sagrada-familia-589x392.jpg",
-  },
-  {
-    id: "t4",
-    city: "Odesa",
-    start: "17.08.2023",
-    end: "22.08.2023",
-    image: "odesa.jpg",
-    // image: "https://media.istockphoto.com/id/1145422105/photo/eiffel-tower-aerial-view-paris.jpg?s=612x612&w=0&k=20&c=sFn6FwTJR0TpX3rP_W4VHrbkTB__6l5kr-lkkqdYrtE=",
-  },
-  {
-    id: "t5",
-    city: "Venice",
-    start: "08.08.2023",
-    end: "12.08.2023",
-    image: "venice.jpg",
-    // image: "https://venicelover.com/images/venice.jpg",
-  },
 ];
 
 function Forecast() {
-  const [currentTripId, setCurrentTripId] = useState(tripsData[0].id);
+  const [currentTrip, setCurrentTrip] = useState(tripsData[0]);
   const [loading, setLoading] = useState(true);
+  const [myTrips, setMyTrips] = useState(tripsData);
 
-  // тут скорее всего будет чтение данных из файла...
   useEffect(() => {
+    setLoading(true);
+    if (localStorage.getItem("my_trips")) {
+      setMyTrips(JSON.parse(localStorage.getItem("my_trips")));
+    } else {
+      localStorage.setItem("my_trips", JSON.stringify(tripsData));
+      setMyTrips(tripsData);
+    }
     setLoading(false);
   }, []);
 
@@ -66,10 +49,10 @@ function Forecast() {
         <h1 className="title">
           <span>Weather</span> Forecast
         </h1>
-        <TripPanel trips={tripsData} chooseTrip={setCurrentTripId} />
-        <TripWeather tripId={currentTripId} />
+        <TripPanel trips={myTrips} chooseTrip={setCurrentTrip} />
+        <TripWeather currentTrip={currentTrip} />
       </div>
-      <Right tripId={currentTripId} />
+      <Right currentTrip={currentTrip} />
     </div>
   );
 }

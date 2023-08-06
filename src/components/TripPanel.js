@@ -40,14 +40,14 @@ function TripPanel({ trips, chooseTrip }) {
   }
 
   function addNewTrip(newTrip) {
-    if (!newTrip.id) {
-      newTrip.id = "tt" + (filteredTrips.length + 1);
-    }
+    newTrip = { id: "tt" + (filteredTrips.length + 1), ...newTrip };
     filteredTrips.push(newTrip);
 
-    const sortedData = sortByDate(filteredTrips);
+    // adding new trip to localStorage
 
+    const sortedData = sortByDate(filteredTrips);
     setFilteredTrips(sortedData);
+    localStorage.setItem("my_trips", JSON.stringify(sortedData));
   }
 
   return (
@@ -66,7 +66,11 @@ function TripPanel({ trips, chooseTrip }) {
         <FindSeacrhIcon />
       </div>
       <div className="mainpanel">
-        <TripList trips={filteredTrips} chooseTrip={chooseTrip} />
+        <TripList
+          trips={filteredTrips}
+          chooseTrip={chooseTrip}
+          show={showModal}
+        />
         <div className="addnewtrip">
           <button className="addtrip__btn" onClick={() => showModalHandler()}>
             +<br />

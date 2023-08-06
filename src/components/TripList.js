@@ -3,7 +3,7 @@ import TripItem from "./TripItem";
 import Loader from "./Loader";
 import { sortByDate } from "../utils/array";
 
-function TripList({ trips, chooseTrip }) {
+function TripList({ trips, chooseTrip, show }) {
   const [loading, setLoading] = useState(true);
   const alltripsRef = useRef();
   const wrapperRef = useRef();
@@ -47,7 +47,7 @@ function TripList({ trips, chooseTrip }) {
       alltripsRef.current.getBoundingClientRect().width <=
         wrapperRef.current.getBoundingClientRect().width
     );
-  }, [sortedTrips]);
+  }, [sortedTrips, show]);
 
   useEffect(() => {
     if (trips.length > 0) {
@@ -55,9 +55,11 @@ function TripList({ trips, chooseTrip }) {
       setSortedTrips(sortedTripsData);
       setLoading(false);
     }
+    // console.log(trips.length);
+    // console.log(isNavShow);
 
     setLoading(false);
-  }, [trips]);
+  }, [trips, show]);
 
   return (
     <div className="triplist">

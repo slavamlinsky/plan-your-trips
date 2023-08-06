@@ -76,6 +76,7 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
     const selectedCity = cities.find(
       (city) => city.name === selectCityRef.current.value
     );
+
     const newTrip = {
       // id: "t6",
       city: selectCityRef.current.value,

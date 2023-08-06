@@ -3,7 +3,7 @@ function TripItem({ trip, onClick }) {
     <div
       className="tripinfo"
       onClick={() => {
-        onClick(trip.id);
+        onClick(trip);
       }}
     >
       <div className="tripinfo__image">

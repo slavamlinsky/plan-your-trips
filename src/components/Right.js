@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { CelsiusDegreesIcon } from "../ui/icons/celsius-degrees-icon";
-import { tripsData } from "./Forecast";
 import Countdown from "./Countdown";
 import { getDayByDate } from "../utils/dates";
 import Loader from "./Loader";
 
 function Right(props) {
   const [loading, setLoading] = useState(true);
-  const currentTripId = props.tripId;
-  const trip = tripsData.find((trip) => trip.id === currentTripId);
-  const cityName = trip.city;
+  const currentTrip = props.currentTrip;
+  // const trip = tripsData.find((trip) => trip.id === currentTripId);
+  const cityName = currentTrip.city;
 
   const [temperature, setTemperature] = useState("");
   const [todayIcon, setTodayIcon] = useState("rain");
@@ -67,7 +66,7 @@ function Right(props) {
         </div>
         <p className="today__city">{cityName}</p>
       </div>
-      <Countdown tripId={props.tripId} tzOffset={timezoneOffset} />
+      <Countdown currentTrip={props.currentTrip} tzOffset={timezoneOffset} />
     </div>
   );
 }
