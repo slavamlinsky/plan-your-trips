@@ -69,12 +69,12 @@ function TripList({ trips, chooseTrip }) {
               No suitable trips found ...
             </h3>
           )}
-          {sortedTrips.map((trip) => {
+          {trips.map((trip) => {
             return <TripItem key={trip.id} trip={trip} onClick={chooseTrip} />;
           })}
         </div>
       </div>
-      {isNavShow && (
+      {trips.length > 0 && isNavShow && (
         <div className="trip__navigation">
           <button
             className="tripnav__btn tripnav__prev"
