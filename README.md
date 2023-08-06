@@ -3,6 +3,6 @@
 Used Firebase 9 version
 
 ## Try to test it
-> Link to: 🔍 [Trip Planner](https://slavamlinsky.github.io/plan-your-trips/)
+> Link to: 🔍<a href="https://slavamlinsky.github.io/plan-your-trips" target="_blank">Trip Planner</a>
 
 
