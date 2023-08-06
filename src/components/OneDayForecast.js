@@ -15,7 +15,7 @@ function OneDayForecast({ day }) {
         />
       </span>
       <p>
-        {day.tempmin}°/{day.tempmax}°
+        {Math.round(day.tempmin)}°/{Math.round(day.tempmax)}°
       </p>
     </div>
   );
