@@ -49,7 +49,7 @@ function TripList({ trips, chooseTrip, show }) {
       alltripsRef.current.getBoundingClientRect().width;
 
     e.target.scrollLeft === 0 ? setPrevDisabled(true) : setPrevDisabled(false);
-    e.target.scrollLeft > shift
+    e.target.scrollLeft > shift - 10
       ? setNextDisabled(true)
       : setNextDisabled(false);
   }
