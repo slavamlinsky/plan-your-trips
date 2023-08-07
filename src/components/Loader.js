@@ -8,7 +8,7 @@ const Loader = () => {
         justifyContent: "center",
       }}
     >
-      <div className="lds-dual-ring"></div>
+      <div className="ds-dual-ring"></div>
     </div>
   );
 };

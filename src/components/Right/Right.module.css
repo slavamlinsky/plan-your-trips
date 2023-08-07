@@ -1,0 +1,125 @@
+.right {
+  width: 30%;
+  margin-left: auto;
+  color: white;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #0a0647;
+}
+
+/* weather backgrounds */
+.clear-day {
+  background-color: #9b3107;
+  background-image: url(../../assets/icons/clear-day-bg.png);
+}
+
+.cloudy {
+  background-color: #085caa;
+  background-image: url(../../assets/icons/cloudy-bg.png);
+}
+
+.partly-cloudy-day {
+  background-color: #306400;
+  background-image: url(../../assets/icons/partly-cloudy-day-bg.png);
+}
+
+.rain {
+  background-color: #484394;
+  background-image: url(../../assets/icons/rain-bg.png);
+}
+
+.showers-day {
+  background-color: #06044b;
+  background-image: url(../../assets/icons/showers-day-bg.png);
+}
+
+.snow {
+  background-color: #0e4135;
+  background-image: url(../../assets/icons/snow-bg.png);
+}
+
+.thunder-rain {
+  background-color: #3f002a;
+  background-image: url(../../assets/icons/thunder-rain-bg.png);
+}
+
+.today {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.today__weekday {
+  font-size: clamp(2.5em, 5vw, 3.75em);
+  font-weight: bold;
+}
+.today__icon__temp {
+  margin-top: 0.5em;
+  display: flex;
+  margin-right: 70px;
+  align-items: center;
+}
+.today__weather__icon {
+  margin-top: 5px;
+}
+.today__weather__icon img {
+  width: 75px;
+}
+.today__temperature {
+  font-size: clamp(3em, 6vw, 4em);
+  position: relative;
+  margin: 0.125em;
+}
+.today__temperature span {
+  position: absolute;
+  top: -35px;
+}
+
+.today__city {
+  margin-top: 0.25em;
+  font-size: 2.25em;
+}
+.countdown {
+  display: flex;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 10em;
+  justify-content: space-around;
+}
+.countdown__days {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-size: clamp(0.5em, 1vw, 0.875em);
+}
+.countdown__days span {
+  font-size: 400%;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 920px) {
+  .today__icon__temp {
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .right {
+    width: 100%;
+  }
+  .today {
+    height: auto;
+    margin-top: 3em;
+  }
+  .countdown {
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+}

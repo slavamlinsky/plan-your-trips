@@ -1,35 +1,23 @@
 import { useState } from "react";
 import TripList from "./TripList";
-import { FindSeacrhIcon } from "../ui/icons/find-search";
-import AddTripModal from "./AddTripModal";
-import { sortByDate } from "../utils/array";
+import { FindSeacrhIcon } from "../../ui/icons/find-search";
+import AddTripModal from "../AddTripModal/AddTripModal";
+import { sortByDate } from "../../utils/array";
+import styles from "./TripPanel.module.css";
 
 function TripPanel({ trips, chooseTrip }) {
   const [searchTrip, setSearchtrip] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(false);
-
   const [filteredTrips, setFilteredTrips] = useState(trips);
   const [showModal, setShowModal] = useState(false);
 
-  // ещё можно добавить сортировку по дате отфильтрованных поездок (проверить)
   function searchChangeHandler(e) {
     setSearchtrip(e.target.value);
-    if (searchTimeout !== false) {
-      clearTimeout(searchTimeout);
-    }
+
     if (e.target.value !== "") {
-      setSearchTimeout(
-        setTimeout(
-          (value) => {
-            const filtered = trips.filter((trip) =>
-              trip.city.toLowerCase().startsWith(value.toLowerCase())
-            );
-            setFilteredTrips(filtered);
-          },
-          100,
-          e.target.value
-        )
+      const filtered = trips.filter((trip) =>
+        trip.city.toLowerCase().startsWith(e.target.value.toLowerCase())
       );
+      setFilteredTrips(filtered);
     } else {
       setFilteredTrips(trips);
     }
@@ -43,21 +31,19 @@ function TripPanel({ trips, chooseTrip }) {
     newTrip = { id: "tt" + (filteredTrips.length + 1), ...newTrip };
     filteredTrips.push(newTrip);
 
-    // adding new trip to localStorage
-
     const sortedData = sortByDate(filteredTrips);
     setFilteredTrips(sortedData);
     localStorage.setItem("my_trips", JSON.stringify(sortedData));
   }
 
   return (
-    <div className="trippanel">
+    <div className={styles.trippanel}>
       <AddTripModal
         isOpen={showModal}
         onClose={showModalHandler}
         addNewTrip={addNewTrip}
       />
-      <div className="tripfilter">
+      <div className={styles.tripfilter}>
         <input
           value={searchTrip}
           onChange={(e) => searchChangeHandler(e)}
@@ -65,14 +51,17 @@ function TripPanel({ trips, chooseTrip }) {
         />
         <FindSeacrhIcon />
       </div>
-      <div className="mainpanel">
+      <div className={styles.mainpanel}>
         <TripList
           trips={filteredTrips}
           chooseTrip={chooseTrip}
           show={showModal}
         />
-        <div className="addnewtrip">
-          <button className="addtrip__btn" onClick={() => showModalHandler()}>
+        <div className={styles.addnewtrip}>
+          <button
+            className={styles.addtrip__btn}
+            onClick={() => showModalHandler()}
+          >
             +<br />
             Add trip
           </button>

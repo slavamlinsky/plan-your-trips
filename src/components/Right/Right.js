@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { CelsiusDegreesIcon } from "../ui/icons/celsius-degrees-icon";
+import { CelsiusDegreesIcon } from "../../ui/icons/celsius-degrees-icon";
 import Countdown from "./Countdown";
-import { getDayByDate } from "../utils/dates";
-import Loader from "./Loader";
+import { getDayByDate } from "../../utils/dates";
+import Loader from "../Loader";
+import styles from "./Right.module.css";
 
 function Right(props) {
   const [loading, setLoading] = useState(true);
@@ -43,28 +44,28 @@ function Right(props) {
   if (loading) {
     return <Loader />;
   }
-
+  // className={`${styles.description} ${styles.yellow}`}
   return (
-    <div className={"right " + todayIcon}>
-      <div className="today">
-        <p className="today__weekday">{todayDay}</p>
+    <div className={`${styles.right} ${styles[todayIcon]}`}>
+      <div className={styles.today}>
+        <p className={styles.today__weekday}>{todayDay}</p>
         <p>{todayConditions}</p>
-        <div className="today-icon-temp">
-          <span className="today-weather-icon">
+        <div className={styles.today__icon__temp}>
+          <span className={styles.today__weather__icon}>
             <img
-              src={require(`../assets/icons/${todayIcon}.png`)}
+              src={require(`../../assets/icons/${todayIcon}.png`)}
               alt={todayConditions}
               title={todayConditions}
             />
           </span>
-          <div className="today__temperature">
+          <div className={styles.today__temperature}>
             {temperature}
             <span>
               <CelsiusDegreesIcon />
             </span>
           </div>
         </div>
-        <p className="today__city">{cityName}</p>
+        <p className={styles.today__city}>{cityName}</p>
       </div>
       <Countdown currentTrip={props.currentTrip} tzOffset={timezoneOffset} />
     </div>

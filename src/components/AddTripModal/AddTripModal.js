@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { CrossIcon } from "../ui/icons/cross-icon";
-import { cities } from "../data/cities";
-import { CalendarIcon } from "../ui/icons/calendar-icon";
-import { SelectArrowIcon } from "../ui/icons/select-arrow-icon";
+import { CrossIcon } from "../../ui/icons/cross-icon";
+import { cities } from "../../data/cities";
+import { CalendarIcon } from "../../ui/icons/calendar-icon";
+import { SelectArrowIcon } from "../../ui/icons/select-arrow-icon";
+import styles from "./AddTripModal.module.css";
 
 function AddTripModal({ isOpen, onClose, addNewTrip }) {
-  const [startDateError, setStartDateError] = useState();
-  const [endDateError, setEndDateError] = useState();
+  const [startDateError, setStartDateError] = useState("");
+  const [endDateError, setEndDateError] = useState("");
 
   const [tripCity, setTripCity] = useState(0);
   const [tripStart, setTripStart] = useState("");
@@ -110,26 +111,25 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
   }
 
   return (
-    <div className="modal__bg" onClick={handleClick}>
-      <div className="modal__box" data-id="modalbox">
+    <div className={styles.modal__bg} onClick={handleClick}>
+      <div className={styles.modal__box} data-id="modalbox">
         <form onSubmit={submitFormHandler}>
           <div className="modal__header">
             <p>Create Trip</p>
             {isOpen}
-            <button className="modal__close" onClick={onClose}>
+            <button className={styles.modal__close} onClick={onClose}>
               <CrossIcon />
             </button>
           </div>
-          <div className="modal__body">
+          <div className={styles.modal__body}>
             <label htmlFor="city">
               <span>*</span> City
             </label>
-            <div className="input__select">
+            <div className={styles.input__select}>
               <select
                 id="city"
                 value={tripCity}
                 onChange={(e) => setTripCity(e.target.value)}
-                defaultValue={0}
               >
                 <option value={0} disabled>
                   Please select a city
@@ -146,7 +146,7 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
             <label htmlFor="startDate">
               <span>*</span> Start date
             </label>
-            <div className="input__date">
+            <div className={styles.input__date}>
               <input
                 value={tripStart}
                 required
@@ -157,13 +157,13 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
               <CalendarIcon />
             </div>
             {startDateError && (
-              <div className="date__error">{startDateError}</div>
+              <div className={styles.date__error}>{startDateError}</div>
             )}
 
             <label htmlFor="endDate">
               <span>*</span> End date
             </label>
-            <div className="input__date">
+            <div className={styles.input__date}>
               <input
                 value={tripEnd}
                 required
@@ -173,17 +173,19 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
               />
               <CalendarIcon />
             </div>
-            {endDateError && <div className="date__error">{endDateError}</div>}
+            {endDateError && (
+              <div className={styles.date__error}>{endDateError}</div>
+            )}
           </div>
-          <div className="modal__footer">
+          <div className={styles.modal__footer}>
             <button
               type="button"
-              className="modal__btn modal__cancel"
+              className={styles.modal__cancel}
               onClick={onClose}
             >
               Cancel
             </button>
-            <button type="submit" className="modal__btn modal__save">
+            <button type="submit" className={styles.modal__save}>
               Save
             </button>
           </div>

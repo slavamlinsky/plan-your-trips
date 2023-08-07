@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Right from "./Right";
-import TripPanel from "./TripPanel";
-import TripWeather from "./TripWeather";
+import Right from "./Right/Right";
+import TripPanel from "./TripPanel/TripPanel";
+import TripWeather from "./TripWeather/TripWeather";
 import Loader from "./Loader";
 
 export const tripsData = [
@@ -11,7 +11,6 @@ export const tripsData = [
     start: "12.08.2023",
     end: "17.08.2023",
     image: "berlin.jpg",
-    // image: "https://s0.tchkcdn.com/g-xnwJf0icf718GvgbCYvx4w/17/272512/660x480/f/0/bae_florian_wehde_ufgi0_ycie0_unsplash.jpg",
   },
   {
     id: "t2",
@@ -19,7 +18,6 @@ export const tripsData = [
     start: "11.08.2023",
     end: "15.08.2023",
     image: "tokyo.jpg",
-    // image: "https://www.theinvisibletourist.com/wp-content/uploads/2022/08/featured_231.jpg",
   },
 ];
 

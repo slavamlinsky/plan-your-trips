@@ -1,0 +1,58 @@
+.header {
+  /* background-color: #1d1a45; */
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  color: white;
+  padding: 0.5em 1.5em;
+}
+
+/* Profile */
+
+.profile {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.profile__avatar {
+  border-radius: 50%;
+  width: 45px;
+  object-fit: contain;
+}
+.profile__button {
+  padding: 0.25em 0.75em 0.25em 1.25em;
+  border-radius: 0.375em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.profile__button svg {
+  width: 20px;
+  margin-left: 0.5em;
+}
+
+.profile__login {
+  padding: 0.25em 1.25em 0.25em 0.75em;
+  border-radius: 0.375em;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.25s linear all;
+}
+.profile__login:hover {
+  background-color: beige;
+}
+
+.profile__login svg {
+  width: 20px;
+  margin-right: 0.5em;
+}

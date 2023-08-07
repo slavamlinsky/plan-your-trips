@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { app, googleAuthProvider } from "../firebase";
+import { app, googleAuthProvider } from "../../firebase";
 
 import { getAuth, signInWithPopup } from "firebase/auth";
-import { GoogleIcon } from "../ui/icons/google-icon";
+import { GoogleIcon } from "../../ui/icons/google-icon";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const auth = getAuth(app);
@@ -32,12 +33,12 @@ const Login = () => {
   };
 
   return (
-    <div className="login__bg">
-      <div className="login__box">
+    <div className={styles.login__bg}>
+      <div className={styles.login__box}>
         <h2>Welcome to TripPlanner</h2>
         <br></br>
         {user && <h3>{user.displayName}</h3>}
-        <button type="button" onClick={login} className="login__btn">
+        <button type="button" onClick={login} className={styles.login__btn}>
           <GoogleIcon />
           Login by Google
         </button>

@@ -1,5 +1,5 @@
 import Forecast from "./components/Forecast";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import { FORECAST_ROUTE, LOGIN_ROUTE } from "./utils/consts";
 
 export const publicRoutes = [

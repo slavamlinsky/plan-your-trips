@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { timeCounter } from "../utils/timer";
+import { timeCounter } from "../../utils/timer";
+import styles from "./Right.module.css";
 
 function Countdown(props) {
   const [timer, setTimer] = useState({});
@@ -27,18 +28,18 @@ function Countdown(props) {
   }, [validStartDate]);
 
   return (
-    <div className="trip__countdown">
-      <div className="countdown">
-        <div className="countdown__days">
+    <div className={styles.trip__countdown}>
+      <div className={styles.countdown}>
+        <div className={styles.countdown__days}>
           <span>{timer.days}</span> days
         </div>
-        <div className="countdown__days">
+        <div className={styles.countdown__days}>
           <span>{timer.hours}</span> hours
         </div>
-        <div className="countdown__days">
+        <div className={styles.countdown__days}>
           <span>{timer.minutes}</span> minutes
         </div>
-        <div className="countdown__days">
+        <div className={styles.countdown__days}>
           <span>{timer.seconds}</span> seconds
         </div>
       </div>

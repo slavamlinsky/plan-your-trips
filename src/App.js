@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import AppRouter from "./components/AppRouter";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./App.css";
@@ -15,7 +15,7 @@ const App = () => {
   if (error) {
     return (
       <div style={{ textAlign: "center" }}>
-        <h1>An Error During Authentification</h1>
+        <h1>An Error During Authorization</h1>
       </div>
     );
   }
@@ -24,7 +24,7 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter basename="/plan-your-trips/">
+    <BrowserRouter>
       <Navbar user={user} />
       <AppRouter />
     </BrowserRouter>

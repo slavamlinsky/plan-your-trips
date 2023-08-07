@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import DailyForecast from "./DailyForecast";
-import Loader from "./Loader";
+
+import styles from "./TripWeather.module.css";
+import Loader from "../Loader";
 
 function TripWeather(props) {
   const [loading, setLoading] = useState(true);
@@ -34,7 +36,7 @@ function TripWeather(props) {
   }
 
   return (
-    <div className="tripforecast">
+    <div className={styles.tripforecast}>
       <h2>
         Week
         {/* / {tripStartDay} / {tripEndDay} */}

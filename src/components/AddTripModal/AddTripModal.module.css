@@ -1,0 +1,150 @@
+/* Add Trip Modal Window*/
+
+.modal__bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(6, 2, 59, 0.75);
+  backdrop-filter: blur(10px);
+}
+.modal__box {
+  width: 90%;
+  max-width: 500px;
+
+  background-color: #fff;
+  border-radius: 0.25em;
+  display: flex;
+  flex-direction: column;
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5em;
+  padding: 0.5em 0.75em;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.modal__close {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.1s all linear;
+}
+.modal__close:hover {
+  transform: rotate(90deg) scale(1.2);
+}
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  padding: 3em 1.25em;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.modal__body label {
+  font-family: "Roboto Condensed", sans-serif;
+  padding: 0.375em 0;
+}
+.modal__body label span {
+  color: tomato;
+}
+
+.modal__body select,
+.modal__body input {
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5em;
+  height: 38px;
+}
+.modal__body select {
+  appearance: none;
+}
+
+.input__date,
+.input__select {
+  /* background-color: #0f6cc9; */
+  position: relative;
+  color: #aaa;
+}
+.input__date input {
+  width: 100%;
+  color: #aaa;
+}
+.input__date input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.input__select select {
+  width: 100%;
+  color: #aaa;
+}
+.input__date input:focus,
+.input__date input:active,
+.input__select select:focus,
+.input__select select:active {
+  outline: 1px solid #0f6cc9;
+}
+
+.input__date svg,
+.input__select svg {
+  position: absolute;
+  width: 20px;
+  top: 10px;
+  right: 10px;
+  pointer-events: none;
+}
+.date__error {
+  color: tomato;
+  font-size: 0.75em;
+  text-align: center;
+}
+
+.modal__footer {
+  padding: 1em 1.25em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal__save {
+  padding: 0.5em 1.75em;
+  margin-left: 1.25em;
+  font-size: 1em;
+  font-family: "Roboto Condensed", sans-serif;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  color: white;
+  background-color: #3399ff;
+}
+.modal__save:hover {
+  background-color: #0f6cc9;
+}
+.modal__cancel {
+  padding: 0.5em 1.75em;
+  margin-left: 1.25em;
+  font-size: 1em;
+  font-family: "Roboto Condensed", sans-serif;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  color: #060607;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.modal__cancel:hover {
+  color: #000;
+  border: 1px solid #777;
+}

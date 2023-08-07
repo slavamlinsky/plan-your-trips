@@ -1,0 +1,67 @@
+.tripforecast {
+  margin-top: 2.5em;
+}
+.tripforecast h2 {
+  font-family: "Roboto Condensed", sans-serif;
+  margin-bottom: 1em;
+}
+.daylyforecast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 75%;
+  max-width: 1050px;
+}
+.oneday__forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: clamp(0.875em, 5vw, 1.125em);
+  width: 14%;
+  max-width: 170px;
+  margin-bottom: 1.5em;
+  /* background-color: #349dff; */
+  color: #aaa;
+}
+
+.weather__icon {
+  text-align: center;
+}
+
+.weather__icon img {
+  width: 85%;
+  max-width: 80px;
+  margin: 0.75em 0 0.25em;
+}
+.oneday__forecast p {
+  color: #1c1c1c;
+  font-size: 0.875em;
+}
+
+@media only screen and (max-width: 1200px) {
+  .oneday__forecast {
+    width: 18%;
+    max-width: 95px;
+  }
+  .daylyforecast {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .oneday__forecast {
+    width: 18%;
+    max-width: 95px;
+  }
+  .daylyforecast {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .oneday_forecast {
+    width: 24%;
+    max-width: 110px;
+  }
+}
