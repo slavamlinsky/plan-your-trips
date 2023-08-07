@@ -47,6 +47,8 @@ function TripList({ trips, chooseTrip, show }) {
     const shift =
       wrapperRef.current.getBoundingClientRect().width -
       alltripsRef.current.getBoundingClientRect().width;
+    console.log(shift);
+    console.log(e.target.scrollLeft);
 
     e.target.scrollLeft === 0 ? setPrevDisabled(true) : setPrevDisabled(false);
     e.target.scrollLeft > shift - 10
