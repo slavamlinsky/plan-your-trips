@@ -43,6 +43,16 @@ function TripList({ trips, chooseTrip, show }) {
       setNextDisabled(false);
     }
   }
+  function scrollHandler(e) {
+    const shift =
+      wrapperRef.current.getBoundingClientRect().width -
+      alltripsRef.current.getBoundingClientRect().width;
+
+    e.target.scrollLeft === 0 ? setPrevDisabled(true) : setPrevDisabled(false);
+    e.target.scrollLeft > shift
+      ? setNextDisabled(true)
+      : setNextDisabled(false);
+  }
 
   useEffect(() => {
     setIsNavShow(
@@ -64,7 +74,11 @@ function TripList({ trips, chooseTrip, show }) {
   return (
     <div className={styles.triplist}>
       {loading && <Loader />}
-      <div className={styles.alltrips} ref={alltripsRef}>
+      <div
+        className={styles.alltrips}
+        ref={alltripsRef}
+        onScroll={scrollHandler}
+      >
         <div className={styles.trips__wrapper} ref={wrapperRef}>
           {trips.length === 0 && (
             <h3 style={{ marginLeft: "2em", opacity: 0.7 }}>

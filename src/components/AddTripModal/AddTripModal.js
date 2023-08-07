@@ -6,6 +6,7 @@ import { SelectArrowIcon } from "../../ui/icons/select-arrow-icon";
 import styles from "./AddTripModal.module.css";
 
 function AddTripModal({ isOpen, onClose, addNewTrip }) {
+  const [cityError, setCityError] = useState("");
   const [startDateError, setStartDateError] = useState("");
   const [endDateError, setEndDateError] = useState("");
 
@@ -61,6 +62,10 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
 
     // check start & end dates to be selected - but input field is required now
 
+    if (!tripCity) {
+      setCityError("Please, select the destination.");
+      return;
+    }
     if (!tripStart) {
       setStartDateError("Event should have a start date. Please, select it.");
       return;
@@ -119,7 +124,7 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
       <div className={styles.modal__box} data-id="modalbox">
         <form onSubmit={submitFormHandler}>
           <div className={styles.modal__header}>
-            <p>Create Trip</p>
+            <p>Create trip</p>
             {isOpen}
             <button className={styles.modal__close} onClick={onClose}>
               <CrossIcon />
@@ -146,6 +151,7 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
               </select>
               <SelectArrowIcon />
             </div>
+            {cityError && <div className={styles.date__error}>{cityError}</div>}
 
             <label htmlFor="startDate">
               <span>*</span> Start date

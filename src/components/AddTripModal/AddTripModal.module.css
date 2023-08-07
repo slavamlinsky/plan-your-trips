@@ -25,9 +25,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5em;
-  padding: 0.5em 0.75em;
-  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.125em;
+  font-weight: bold;
+  padding: 0.875em 0.75em;
+  /* font-family: "Roboto Condensed", sans-serif; */
 }
 
 .modal__close {
@@ -53,7 +54,8 @@
   border-bottom: 1px solid #ccc;
 }
 .modal__body label {
-  font-family: "Roboto Condensed", sans-serif;
+  /* font-family: "Roboto Condensed", sans-serif; */
+  font-size: 0.875em;
   padding: 0.375em 0;
 }
 .modal__body label span {
@@ -62,11 +64,12 @@
 
 .modal__body select,
 .modal__body input {
-  padding: 0.5em;
-  font-size: 1em;
+  padding: 0.5em 1em;
+  font-size: 0.875em;
   border: 1px solid #ccc;
   margin-bottom: 0.5em;
   height: 38px;
+  font-family: inherit;
 }
 .modal__body select {
   appearance: none;
