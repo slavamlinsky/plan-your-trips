@@ -116,8 +116,7 @@
   display: flex;
   justify-content: flex-end;
 }
-
-.modal__save {
+.modal__btn {
   padding: 0.5em 1.75em;
   margin-left: 1.25em;
   font-size: 1em;
@@ -125,6 +124,9 @@
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
+}
+
+.modal__save {
   color: white;
   background-color: #3399ff;
 }
@@ -132,13 +134,6 @@
   background-color: #0f6cc9;
 }
 .modal__cancel {
-  padding: 0.5em 1.75em;
-  margin-left: 1.25em;
-  font-size: 1em;
-  font-family: "Roboto Condensed", sans-serif;
-  border: none;
-  border-radius: 0.25em;
-  cursor: pointer;
   color: #060607;
   background-color: #fff;
   border: 1px solid #ccc;

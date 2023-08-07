@@ -99,6 +99,10 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
     resetForm();
     onClose();
   }
+  function cancelClick() {
+    resetForm();
+    onClose();
+  }
 
   function handleClick(e) {
     const insideModal = e.target.closest("[data-id=modalbox]");
@@ -180,12 +184,15 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
           <div className={styles.modal__footer}>
             <button
               type="button"
-              className={styles.modal__cancel}
-              onClick={onClose}
+              className={`${styles.modal__btn} ${styles.modal__cancel}`}
+              onClick={cancelClick}
             >
               Cancel
             </button>
-            <button type="submit" className={styles.modal__save}>
+            <button
+              type="submit"
+              className={`${styles.modal__btn} ${styles.modal__save}`}
+            >
               Save
             </button>
           </div>
