@@ -24,7 +24,7 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/plan-your-trips">
       <Navbar user={user} />
       <AppRouter />
     </BrowserRouter>
