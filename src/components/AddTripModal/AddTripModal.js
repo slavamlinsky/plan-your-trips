@@ -114,7 +114,7 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
     <div className={styles.modal__bg} onClick={handleClick}>
       <div className={styles.modal__box} data-id="modalbox">
         <form onSubmit={submitFormHandler}>
-          <div className="modal__header">
+          <div className={styles.modal__header}>
             <p>Create Trip</p>
             {isOpen}
             <button className={styles.modal__close} onClick={onClose}>
