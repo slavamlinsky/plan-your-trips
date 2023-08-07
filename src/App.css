@@ -502,9 +502,11 @@
 .input__select {
   /* background-color: #0f6cc9; */
   position: relative;
+  color: #aaa;
 }
 .input__date input {
   width: 100%;
+  color: #aaa;
 }
 .input__date input::-webkit-calendar-picker-indicator {
   opacity: 0;
@@ -512,6 +514,7 @@
 
 .input__select select {
   width: 100%;
+  color: #aaa;
 }
 .input__date input:focus,
 .input__date input:active,
