@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { CrossIcon } from "../ui/icons/cross-icon";
 import { cities } from "../data/cities";
 import { CalendarIcon } from "../ui/icons/calendar-icon";
@@ -8,11 +8,16 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
   const [startDateError, setStartDateError] = useState();
   const [endDateError, setEndDateError] = useState();
 
-  const selectCityRef = useRef();
-  const inputStartRef = useRef();
-  const inputEndRef = useRef();
+  const [tripCity, setTripCity] = useState();
+  const [tripStart, setTripStart] = useState();
+  const [tripEnd, setTripEnd] = useState();
+
+  // const selectCityRef = useRef();
+  // const inputStartRef = useRef();
+  // const inputEndRef = useRef();
 
   function changeStartDate(value) {
+    setTripStart(value);
     const start = new Date(value);
     const today = new Date();
     const parsedStart = Date.parse(start);
@@ -32,6 +37,7 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
   }
 
   function changeEndDate(value) {
+    setTripEnd(value);
     const end = new Date(value);
     const today = new Date();
     const parsedEnd = Date.parse(end);
@@ -51,18 +57,22 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
   function submitFormHandler(e) {
     e.preventDefault();
     // check start & end dates to be selected - but input field is required now
-    if (!inputStartRef.current.value) {
+    // if (!inputStartRef.current.value) {
+    if (!tripStart) {
       setStartDateError("Event should have a start date. Please, select it.");
       return;
     }
-    if (!inputEndRef.current.value) {
+    // if (!inputEndRef.current.value) {
+    if (!tripEnd) {
       setStartDateError("Event should have an end date. Please, select it.");
       return;
     }
 
     // check that start date is earlier than the end date
-    const start = new Date(inputStartRef.current.value);
-    const end = new Date(inputEndRef.current.value);
+    // const start = new Date(inputStartRef.current.value);
+    // const end = new Date(inputEndRef.current.value);
+    const start = new Date(tripStart);
+    const end = new Date(tripEnd);
     const parsedStart = Date.parse(start);
     const parsedEnd = Date.parse(end);
 
@@ -74,14 +84,22 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
     }
 
     const selectedCity = cities.find(
-      (city) => city.name === selectCityRef.current.value
+      // (city) => city.name === selectCityRef.current.value
+      (city) => city.name === tripCity
     );
+
+    // const newTrip = {
+    //   city: selectCityRef.current.value,
+    //   start: inputStartRef.current.value.split("-").reverse().join("."),
+    //   end: inputEndRef.current.value.split("-").reverse().join("."),
+    //   image: selectedCity.image,
+    // };
 
     const newTrip = {
       // id: "t6",
-      city: selectCityRef.current.value,
-      start: inputStartRef.current.value.split("-").reverse().join("."),
-      end: inputEndRef.current.value.split("-").reverse().join("."),
+      city: tripCity,
+      start: tripStart.split("-").reverse().join("."),
+      end: tripEnd.split("-").reverse().join("."),
       image: selectedCity.image,
     };
 
@@ -118,7 +136,11 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
               <span>*</span> City
             </label>
             <div className="input__select">
-              <select id="city" ref={selectCityRef}>
+              <select
+                id="city"
+                value={tripCity}
+                onChange={(e) => setTripCity(e.target.value)}
+              >
                 {cities.map((city) => (
                   <option key={city.id} value={city.name}>
                     {city.name}
@@ -133,11 +155,12 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
             </label>
             <div className="input__date">
               <input
+                value={tripStart}
                 required
                 id="startDate"
                 type="date"
                 onChange={(e) => changeStartDate(e.target.value)}
-                ref={inputStartRef}
+                // ref={inputStartRef}
               />
               <CalendarIcon />
             </div>
@@ -150,11 +173,12 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
             </label>
             <div className="input__date">
               <input
+                value={tripEnd}
                 required
                 id="endDate"
                 type="date"
                 onChange={(e) => changeEndDate(e.target.value)}
-                ref={inputEndRef}
+                // ref={inputEndRef}
               />
               <CalendarIcon />
             </div>
