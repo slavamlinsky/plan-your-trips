@@ -44,9 +44,11 @@ function Forecast() {
   return (
     <div className="main">
       <div className="forecast">
-        <h1 className="title">
-          <span>Weather</span> Forecast
-        </h1>
+        <a href="https://slavamlinsky.github.io/plan-your-trips/">
+          <h1 className="title">
+            <span>Weather</span> Forecast
+          </h1>
+        </a>
         <TripPanel trips={myTrips} chooseTrip={setCurrentTrip} />
         <TripWeather currentTrip={currentTrip} />
       </div>
