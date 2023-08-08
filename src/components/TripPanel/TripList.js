@@ -67,7 +67,7 @@ function TripList({ trips, chooseTrip, show }) {
       setSortedTrips(sortedTripsData);
       setLoading(false);
     }
-
+    setNextDisabled(false);
     setLoading(false);
   }, [trips, show]);
 

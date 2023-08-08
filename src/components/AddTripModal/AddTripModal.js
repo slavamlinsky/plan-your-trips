@@ -55,6 +55,9 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
     setTripStart("");
     setTripEnd("");
     setTripCity(0);
+    setCityError("");
+    setStartDateError("");
+    setEndDateError("");
   }
 
   function submitFormHandler(e) {
@@ -138,7 +141,10 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
               <select
                 id="city"
                 value={tripCity}
-                onChange={(e) => setTripCity(e.target.value)}
+                onChange={(e) => {
+                  setCityError("");
+                  setTripCity(e.target.value);
+                }}
               >
                 <option value={0} disabled>
                   Please select a city

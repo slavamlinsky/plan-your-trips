@@ -9,14 +9,14 @@ export const tripsData = [
     id: "t1",
     city: "Berlin",
     start: "12.08.2023",
-    end: "17.08.2023",
+    end: "16.08.2023",
     image: "berlin.jpg",
   },
   {
     id: "t2",
     city: "Tokyo",
-    start: "11.08.2023",
-    end: "15.08.2023",
+    start: "14.08.2023",
+    end: "17.08.2023",
     image: "tokyo.jpg",
   },
 ];
