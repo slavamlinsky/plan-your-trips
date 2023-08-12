@@ -8,7 +8,6 @@ import styles from "./Right.module.css";
 function Right(props) {
   const [loading, setLoading] = useState(true);
   const currentTrip = props.currentTrip;
-  // const trip = tripsData.find((trip) => trip.id === currentTripId);
   const cityName = currentTrip.city;
 
   const [temperature, setTemperature] = useState("");
@@ -44,7 +43,7 @@ function Right(props) {
   if (loading) {
     return <Loader />;
   }
-  // className={`${styles.description} ${styles.yellow}`}
+
   return (
     <div className={`${styles.right} ${styles[todayIcon]}`}>
       <div className={styles.today}>

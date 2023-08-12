@@ -37,10 +37,7 @@ function TripWeather(props) {
 
   return (
     <div className={styles.tripforecast}>
-      <h2>
-        Week
-        {/* / {tripStartDay} / {tripEndDay} */}
-      </h2>
+      <h2>Week</h2>
       <DailyForecast days={daysData} />
     </div>
   );
