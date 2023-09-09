@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { timeCounter } from "../../utils/timer";
+import { secondsCounter, timeCounter } from "../../utils/timer";
 import styles from "./Right.module.css";
 
 function Countdown(props) {
@@ -14,11 +14,13 @@ function Countdown(props) {
   useEffect(() => {
     const start = new Date(validStartDate);
     const now = new Date();
+    now.setHours(now.getHours() + 3);
+
     const waitTime = timeCounter(start, now);
-    setWait(start - now);
+    setWait(secondsCounter(start, now));
     setTimer(waitTime);
 
-    if (start > now) {
+    if (Date.parse(start) > Date.parse(now)) {
       const interval = setInterval(() => {
         const now = new Date();
         const waitTime = timeCounter(start, now);
@@ -30,8 +32,6 @@ function Countdown(props) {
       };
     }
   }, [validStartDate]);
-
-  // console.log(wait);
 
   if (wait < 0) {
     return (

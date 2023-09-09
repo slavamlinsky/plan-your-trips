@@ -20,3 +20,9 @@ export function timeCounter(start, now) {
 
   return timer;
 }
+
+export function secondsCounter(start, now) {
+  const milliseconds = Date.parse(start) - (Date.parse(now) + 3 * 60 * 1000);
+
+  return milliseconds;
+}
