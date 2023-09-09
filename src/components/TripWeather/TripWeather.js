@@ -3,6 +3,7 @@ import DailyForecast from "./DailyForecast";
 
 import styles from "./TripWeather.module.css";
 import Loader from "../Loader";
+import { getWeather } from "../../services/api";
 
 function TripWeather(props) {
   const [loading, setLoading] = useState(true);
@@ -15,19 +16,21 @@ function TripWeather(props) {
 
   useEffect(() => {
     if (tripStartDay !== "" && tripEndDay !== "") {
-      try {
-        fetch(
-          `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}/${tripStartDay}/${tripEndDay}?unitGroup=metric&include=days&key=P5UC3JS9UQS3H5UMQ2CEPZPSH&contentType=json`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            setDaysData(data.days);
-          });
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+      async function fetchData() {
+        try {
+          const weatherData = await getWeather(
+            cityName,
+            tripStartDay,
+            tripEndDay
+          );
+          setDaysData(weatherData);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
       }
+      fetchData();
     }
   }, [cityName, tripStartDay, tripEndDay]);
 

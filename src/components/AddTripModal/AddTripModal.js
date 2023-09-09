@@ -1,9 +1,15 @@
-import { useState } from "react";
-import { CrossIcon } from "../../ui/icons/cross-icon";
+import { useEffect, useState } from "react";
+import { CrossIcon } from "../../assets/icons/svg/cross-icon";
 import { cities } from "../../data/cities";
-import { CalendarIcon } from "../../ui/icons/calendar-icon";
-import { SelectArrowIcon } from "../../ui/icons/select-arrow-icon";
+import { CalendarIcon } from "../../assets/icons/svg/calendar-icon";
+import { SelectArrowIcon } from "../../assets/icons/svg/select-arrow-icon";
 import styles from "./AddTripModal.module.css";
+import {
+  MAXIMUM_CALENDAR_PERIOD,
+  MILISECONDS_IN_DAY,
+  MILISECONDS_IN_HOUR,
+  TIMEZONE_OFFSET,
+} from "../../utils/consts";
 
 function AddTripModal({ isOpen, onClose, addNewTrip }) {
   const [cityError, setCityError] = useState("");
@@ -14,20 +20,23 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
   const [tripStart, setTripStart] = useState("");
   const [tripEnd, setTripEnd] = useState("");
 
+  useEffect(() => {
+    setTripStart("");
+  }, []);
+
   function changeStartDate(value) {
     setTripStart(value);
     const start = new Date(value);
     const today = new Date();
     const parsedStart = Date.parse(start);
-    const parsedToday = Date.parse(today) + +3 * 60 * 60 * 1000;
-
-    // 1296000000 = 15 дней = 15 * 24 * 60 * 60 * 1000 дней
+    const parsedToday =
+      Date.parse(today) + TIMEZONE_OFFSET * MILISECONDS_IN_HOUR;
 
     if (parsedStart < parsedToday) {
       setStartDateError(
         "Event should be in future. Please, choose another start date."
       );
-    } else if (parsedStart > parsedToday + 1296000000) {
+    } else if (parsedStart > parsedToday + 15 * MILISECONDS_IN_DAY) {
       setStartDateError("The start date should be within the next 15 days!");
     } else {
       setStartDateError();
@@ -39,13 +48,14 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
     const end = new Date(value);
     const today = new Date();
     const parsedEnd = Date.parse(end);
-    const parsedToday = Date.parse(today) + 3 * 60 * 60 * 1000;
+    const parsedToday =
+      Date.parse(today) + TIMEZONE_OFFSET * MILISECONDS_IN_HOUR;
 
     if (parsedEnd < parsedToday) {
       setEndDateError(
         "Event should be in future. Please, choose another end date."
       );
-    } else if (parsedEnd > parsedToday + 1296000000) {
+    } else if (parsedEnd > parsedToday + 15 * MILISECONDS_IN_DAY) {
       setEndDateError("The end date should be within the next 15 days!");
     } else {
       setEndDateError();
@@ -121,6 +131,22 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
   if (!isOpen) {
     return null;
   }
+  const today = new Date();
+  const minDate =
+    today.getFullYear() +
+    "-" +
+    (today.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
+    today.getDate().toString().padStart(2, "0");
+
+  const finish = new Date();
+  finish.setDate(today.getDate() + MAXIMUM_CALENDAR_PERIOD);
+  const maxDate =
+    finish.getFullYear() +
+    "-" +
+    (finish.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
+    finish.getDate().toString().padStart(2, "0");
 
   return (
     <div className={styles.modal__bg} onClick={handleClick}>
@@ -168,6 +194,8 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
                 required
                 id="startDate"
                 type="date"
+                min={minDate}
+                max={maxDate}
                 onChange={(e) => changeStartDate(e.target.value)}
               />
               <CalendarIcon />
@@ -185,6 +213,8 @@ function AddTripModal({ isOpen, onClose, addNewTrip }) {
                 required
                 id="endDate"
                 type="date"
+                min={minDate}
+                max={maxDate}
                 onChange={(e) => changeEndDate(e.target.value)}
               />
               <CalendarIcon />

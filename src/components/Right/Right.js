@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { CelsiusDegreesIcon } from "../../ui/icons/celsius-degrees-icon";
+import { CelsiusDegreesIcon } from "../../assets/icons/svg/celsius-degrees-icon";
 import Countdown from "./Countdown";
 import { getDayByDate } from "../../utils/dates";
 import Loader from "../Loader";
 import styles from "./Right.module.css";
+import { getTodayWeather } from "../../services/api";
 
 function Right(props) {
   const [loading, setLoading] = useState(true);
@@ -17,27 +18,26 @@ function Right(props) {
   const [timezoneOffset, setTimezoneOffset] = useState(0);
 
   useEffect(() => {
-    if (cityName !== "") {
-      try {
-        fetch(
-          `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}/today?unitGroup=metric&include=days&key=P5UC3JS9UQS3H5UMQ2CEPZPSH&contentType=json`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            setTemperature(data.days[0].temp);
-            setTodayIcon(data.days[0].icon);
-            setTodayConditions(data.days[0].conditions);
-            setTimezoneOffset(data.tzoffset);
+    async function fetchData() {
+      if (cityName !== "") {
+        try {
+          const dayWeather = await getTodayWeather(cityName);
 
-            const validDate = new Date();
-            setTodayDay(getDayByDate(validDate));
-          });
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+          setTemperature(dayWeather.days[0].temp);
+          setTodayIcon(dayWeather.days[0].icon);
+          setTodayConditions(dayWeather.days[0].conditions);
+          setTimezoneOffset(dayWeather.tzoffset);
+
+          const validDate = new Date();
+          setTodayDay(getDayByDate(validDate));
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
       }
     }
+    fetchData();
   }, [cityName]);
 
   if (loading) {
@@ -52,7 +52,7 @@ function Right(props) {
         <div className={styles.today__icon__temp}>
           <span className={styles.today__weather__icon}>
             <img
-              src={require(`../../assets/icons/${todayIcon}.png`)}
+              src={require(`../../assets/icons/weather/${todayIcon}.png`)}
               alt={todayConditions}
               title={todayConditions}
             />

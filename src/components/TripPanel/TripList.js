@@ -4,6 +4,7 @@ import TripItem from "./TripItem";
 import { sortByDate } from "../../utils/array";
 import Loader from "../Loader";
 import styles from "./TripPanel.module.css";
+import { TRIP_ITEM_WIDTH } from "../../utils/consts";
 
 function TripList({ trips, chooseTrip, show }) {
   const [loading, setLoading] = useState(true);
@@ -19,7 +20,7 @@ function TripList({ trips, chooseTrip, show }) {
 
   function prevTrip() {
     setNextDisabled(false);
-    alltripsRef.current.scrollLeft -= 320;
+    alltripsRef.current.scrollLeft -= TRIP_ITEM_WIDTH;
 
     if (alltripsRef.current.scrollLeft === 0) {
       setPrevDisabled(true);
@@ -30,13 +31,13 @@ function TripList({ trips, chooseTrip, show }) {
 
   function nextTrip() {
     setPrevDisabled(false);
-    alltripsRef.current.scrollLeft += 320;
+    alltripsRef.current.scrollLeft += TRIP_ITEM_WIDTH;
 
     if (
       alltripsRef.current.scrollLeft >
       wrapperRef.current.getBoundingClientRect().width -
         alltripsRef.current.getBoundingClientRect().width -
-        320
+        TRIP_ITEM_WIDTH
     ) {
       setNextDisabled(true);
     } else {
@@ -49,7 +50,7 @@ function TripList({ trips, chooseTrip, show }) {
       alltripsRef.current.getBoundingClientRect().width;
 
     e.target.scrollLeft === 0 ? setPrevDisabled(true) : setPrevDisabled(false);
-    e.target.scrollLeft > shift - 20
+    e.target.scrollLeft >= shift
       ? setNextDisabled(true)
       : setNextDisabled(false);
   }
@@ -79,16 +80,17 @@ function TripList({ trips, chooseTrip, show }) {
         ref={alltripsRef}
         onScroll={scrollHandler}
       >
-        <div className={styles.trips__wrapper} ref={wrapperRef}>
+        <ul className={styles.trips__wrapper} ref={wrapperRef}>
           {trips.length === 0 && (
-            <h3 style={{ marginLeft: "2em", opacity: 0.7 }}>
+            <li className={styles.trips__notfound}>
               No suitable trips found ...
-            </h3>
+            </li>
           )}
+
           {trips.map((trip) => {
             return <TripItem key={trip.id} trip={trip} onClick={chooseTrip} />;
           })}
-        </div>
+        </ul>
       </div>
       {trips.length > 0 && isNavShow && (
         <div className={styles.trip__navigation}>

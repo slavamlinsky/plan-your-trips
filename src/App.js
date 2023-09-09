@@ -14,7 +14,7 @@ const App = () => {
 
   if (error) {
     return (
-      <div style={{ textAlign: "center" }}>
+      <div>
         <h1>An Error During Authorization</h1>
       </div>
     );

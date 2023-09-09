@@ -1,14 +1,17 @@
 import styles from "./TripPanel.module.css";
 function TripItem({ trip, onClick }) {
   return (
-    <div
+    <li
       className={styles.tripinfo}
       onClick={() => {
         onClick(trip);
       }}
     >
       <div className={styles.tripinfo__image}>
-        <img src={require(`../../assets/city/${trip.image}`)} alt={trip.city} />
+        <img
+          src={require(`../../assets/images/city/${trip.image}`)}
+          alt={trip.city}
+        />
       </div>
       <div className={styles.tripinfo__text}>
         <h4 className={styles.tripinfo__city}>{trip.city}</h4>
@@ -16,7 +19,7 @@ function TripItem({ trip, onClick }) {
           {trip.start} - {trip.end}
         </p>
       </div>
-    </div>
+    </li>
   );
 }
 

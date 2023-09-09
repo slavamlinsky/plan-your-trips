@@ -12,37 +12,37 @@
 /* weather backgrounds */
 .clear-day {
   background-color: #9b3107;
-  background-image: url(../../assets/icons/clear-day-bg.png);
+  background-image: url(../../assets/icons/weather/clear-day-bg.png);
 }
 
 .cloudy {
   background-color: #085caa;
-  background-image: url(../../assets/icons/cloudy-bg.png);
+  background-image: url(../../assets/icons/weather/cloudy-bg.png);
 }
 
 .partly-cloudy-day {
   background-color: #306400;
-  background-image: url(../../assets/icons/partly-cloudy-day-bg.png);
+  background-image: url(../../assets/icons/weather/partly-cloudy-day-bg.png);
 }
 
 .rain {
   background-color: #484394;
-  background-image: url(../../assets/icons/rain-bg.png);
+  background-image: url(../../assets/icons/weather/rain-bg.png);
 }
 
 .showers-day {
   background-color: #06044b;
-  background-image: url(../../assets/icons/showers-day-bg.png);
+  background-image: url(../../assets/icons/weather/showers-day-bg.png);
 }
 
 .snow {
   background-color: #0e4135;
-  background-image: url(../../assets/icons/snow-bg.png);
+  background-image: url(../../assets/icons/weather/snow-bg.png);
 }
 
 .thunder-rain {
   background-color: #3f002a;
-  background-image: url(../../assets/icons/thunder-rain-bg.png);
+  background-image: url(../../assets/icons/weather/thunder-rain-bg.png);
 }
 
 .today {
@@ -82,6 +82,18 @@
 .today__city {
   margin-top: 0.25em;
   font-size: 2.25em;
+}
+.trip__countdown {
+  display: flex;
+  justify-content: center;
+}
+
+.trip__already {
+  display: flex;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 10em;
+  justify-content: space-around;
 }
 .countdown {
   display: flex;

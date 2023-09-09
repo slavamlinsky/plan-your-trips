@@ -1,5 +1,4 @@
 .header {
-  /* background-color: #1d1a45; */
   position: absolute;
   right: 10px;
   top: 10px;
@@ -24,14 +23,17 @@
 .profile__avatar {
   border-radius: 50%;
   width: 45px;
+  margin-right: 10;
   object-fit: contain;
 }
 .profile__button {
   padding: 0.25em 0.75em 0.25em 1.25em;
   border-radius: 0.375em;
+  background-color: aliceblue;
   display: flex;
   align-items: center;
   cursor: pointer;
+  border: none;
 }
 .profile__button svg {
   width: 20px;
@@ -41,6 +43,8 @@
 .profile__login {
   padding: 0.25em 1.25em 0.25em 0.75em;
   border-radius: 0.375em;
+  font-size: 0.875em;
+  color: black;
   background-color: aliceblue;
   display: flex;
   align-items: center;

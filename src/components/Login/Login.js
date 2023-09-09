@@ -1,30 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { app, googleAuthProvider } from "../../firebase";
 
 import { getAuth, signInWithPopup } from "firebase/auth";
-import { GoogleIcon } from "../../ui/icons/google-icon";
+import { GoogleIcon } from "../../assets/icons/svg/google-icon";
 import styles from "./Login.module.css";
 
 const Login = () => {
   const auth = getAuth(app);
   const [user, setUser] = useState(auth.currentUser);
 
-  useEffect(() => {
-    const unsub = auth.onAuthStateChanged((maybeUser) => {
-      if (maybeUser != null) {
-        return setUser(maybeUser);
-      }
-
-      signInWithPopup(auth, googleAuthProvider)
-        .then((credentials) => {
-          setUser(credentials.user);
-        })
-        .catch((e) => console.error(e));
-    });
-    return unsub;
-  }, [auth]);
-
   const login = async () => {
+    console.log(auth);
     signInWithPopup(auth, googleAuthProvider)
       .then((credentials) => {
         setUser(credentials.user);

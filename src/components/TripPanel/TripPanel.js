@@ -1,6 +1,6 @@
 import { useState } from "react";
 import TripList from "./TripList";
-import { FindSeacrhIcon } from "../../ui/icons/find-search";
+import { FindSeacrhIcon } from "../../assets/icons/svg/find-search";
 import AddTripModal from "../AddTripModal/AddTripModal";
 import { sortByDate } from "../../utils/array";
 import styles from "./TripPanel.module.css";

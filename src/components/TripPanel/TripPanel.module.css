@@ -106,6 +106,12 @@
 .trips__wrapper {
   display: flex;
   gap: 3.75em;
+  list-style: none;
+}
+.trips__notfound {
+  margin-left: 2em;
+  opacity: 0.7;
+  font-size: 1.25em;
 }
 
 .addnewtrip {

@@ -6,11 +6,11 @@ function OneDayForecast({ day }) {
   const dayOfWeek = getDayByDate(day.datetime);
 
   return (
-    <div className={styles.oneday__forecast}>
+    <li className={styles.oneday__forecast}>
       {dayOfWeek}
       <span className={styles.weather__icon}>
         <img
-          src={require(`../../assets/icons/${day.icon}.png`)}
+          src={require(`../../assets/icons/weather/${day.icon}.png`)}
           alt={day.conditions}
           title={day.conditions}
         />
@@ -18,7 +18,7 @@ function OneDayForecast({ day }) {
       <p>
         {Math.round(day.tempmin)}°/{Math.round(day.tempmax)}°
       </p>
-    </div>
+    </li>
   );
 }
 

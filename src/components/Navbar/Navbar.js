@@ -2,9 +2,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import { app } from "../../firebase";
 import { LOGIN_ROUTE } from "../../utils/consts";
-import { LogoutIcon } from "../../ui/icons/logout-icon";
-import { SigninIcon } from "../../ui/icons/signin-icon";
+import { LogoutIcon } from "../../assets/icons/svg/logout-icon";
+import { SigninIcon } from "../../assets/icons/svg/signin-icon";
 import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const auth = getAuth(app);
@@ -18,7 +19,6 @@ const Navbar = () => {
             <img
               className={styles.profile__avatar}
               src={user.photoURL}
-              style={{ marginRight: 10 }}
               alt="avatar"
             />
             {/* {user.displayName} */}
@@ -33,10 +33,10 @@ const Navbar = () => {
           </button>
         </>
       ) : (
-        <a className={styles.profile__login} href={LOGIN_ROUTE}>
+        <Link className={styles.profile__login} to={LOGIN_ROUTE}>
           <SigninIcon />
           Sign In
-        </a>
+        </Link>
       )}
     </div>
   );
